@@ -6,6 +6,15 @@ resources:
   - gotk-sync.yaml
 patches:
   - patch: |
+      - op: replace
+        path: /spec/ref
+        value:
+          branch: main
+    target:
+      kind: GitRepository
+      name: flux-system
+      namespace: flux-system
+  - patch: |
       - op: add
         path: /spec/template/spec/containers/0/args/-
         value: --concurrent=10
